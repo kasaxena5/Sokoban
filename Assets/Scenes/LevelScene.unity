@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 570597952062475452, guid: fd1564641c6263f47bafec084d78b09d, type: 3}
+  boxPrefab: {fileID: 3184258273002207144, guid: 45e120b086736754fa725f792276e46a, type: 3}
 --- !u!4 &1952549389
 Transform:
   m_ObjectHideFlags: 0
