@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
             {
                 Tile tile = Instantiate(tilePrefab, new Vector3(Tile.size * j - (n / 2) * Tile.size, -Tile.size * i + (n / 2) * Tile.size, 0), Quaternion.identity);
 
-                switch(Levels.loadedLevel[i][j])
+                switch(Levels.loadedLevel[i, j])
                 {
                     case '@':
                         tile.SetState(Tile.TileState.Wall);
@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
         {
             for(int j = 0; j < n; j++)
             {
-                if(Levels.loadedLevel[i][j] == '#')
+                if(Levels.loadedLevel[i, j] == '#')
                 {
                     boxes[i, j] = Instantiate(boxPrefab, new Vector3(Tile.size * j - (n / 2) * Tile.size, -Tile.size * i + (n / 2) * Tile.size, 0), Quaternion.identity);
                 }
@@ -78,7 +78,18 @@ public class LevelManager : MonoBehaviour
 
     private void DestroyLevelForeground()
     {
-
+        int n = Levels.n;
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = 0; j < n; j++)
+            {
+                if(boxes[i, j] != null)
+                {
+                    Destroy(boxes[i, j].gameObject);
+                }
+            }
+        }
+        boxes = null;
     }
 
     private void DestroyLevel()
